@@ -31,4 +31,27 @@ public class AddrBookDAO {
 		}
 		return abByUsername; //객체 반환해 줌
 	}
+	
+	//주소 삭제
+	public void delete(String username) {
+		for(int i=0; i<addrList.size(); i++) {
+			AddrBook ab = addrList.get(i);
+			//이름 비교
+			String dbUser = ab.getUsername();
+			if(dbUser.equals(username)) { //입력된 이름과 외부 입력 이름이 같으면
+				addrList.remove(i);  //해당 객체 삭제
+				break;
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+

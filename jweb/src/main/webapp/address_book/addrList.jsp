@@ -29,7 +29,9 @@
 				<td><%=addrBook.getGender() %></td>
 				<td><a href="./addrView.jsp?username=<%=addrBook.getUsername() %>">
 					<button type="button">보기</button></a></td>
-				<td><button type="button">삭제</button></td>
+				<td><a onclick="return confirm('정말로 삭제하시겠습니까?')"
+					   href="./addrDelete.jsp?username=<%=addrBook.getUsername() %>">
+					<button type="button">삭제</button></a></td>
 			</tr>
 			<% } %>
 		</table>
