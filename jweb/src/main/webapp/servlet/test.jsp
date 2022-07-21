@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>서블릿에 요청하기</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<form action="login2" method="post">
+	<h2>서블릿 테스트</h2>
+	
+	<form action="../test" method="post">
 		<p>
 			<label for="userid">아이디 : </label>
 			<input type="text" id="userid" name="userid">
