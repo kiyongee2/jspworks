@@ -27,6 +27,9 @@
 				<td><%=addrBook.getTel() %></td>
 				<td><%=addrBook.getEmail() %></td>
 				<td><%=addrBook.getGender() %></td>
+				<td><a href="./addrView.jsp?username=<%=addrBook.getUsername() %>">
+					<button type="button">보기</button></a></td>
+				<td><button type="button">삭제</button></td>
 			</tr>
 			<% } %>
 		</table>
