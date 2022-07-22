@@ -7,7 +7,7 @@
 <title>서블릿에 요청하기</title>
 </head>
 <body>
-	<form action="login2" method="post">
+	<form action="/jweb/login2" method="post">
 		<p>
 			<label for="userid">아이디 : </label>
 			<input type="text" id="userid" name="userid">

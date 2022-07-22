@@ -4,7 +4,10 @@
 <%
 	String uname = request.getParameter("username");
 
-	abDAO.delete(uname); //dao의 delete() 호출
-	
-	response.sendRedirect("addrList.jsp"); //목록 페이지로 이동
+	if(session.getAttribute("userName") != null){
+		abDAO.delete(uname); //dao의 delete() 호출
+		response.sendRedirect("addrList.jsp"); //목록 페이지로 이동
+	}else{
+		response.sendRedirect("./addrForm.jsp"); //등록 폼 이동
+	}
 %>

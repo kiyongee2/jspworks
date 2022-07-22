@@ -9,15 +9,17 @@
 <link rel="stylesheet" href="../resources/css/addrbook.css">
 </head>
 <jsp:useBean id="abDAO" class="com.dao.AddrBookDAO" scope="application" />
-<%
-	String uname = request.getParameter("username"); //username 속성 값 가져오기
-    AddrBook addrBook = abDAO.getAbByUserName(uname); //dao에서 getAbByUserName() 호출함
-%>
 <body>
 	<div id="container">
 		<h2>상세 보기</h2>
 		<hr>
 		<table id="tbl_view">
+		<%
+			String uname = request.getParameter("username"); //username 속성 값 가져오기
+		
+			if(session.getAttribute("userName") != null){
+				AddrBook addrBook = abDAO.getAbByUserName(uname);
+		%>
 			<tr>
 				<td>이름</td><td><%=addrBook.getUsername() %>
 			</tr>
@@ -30,7 +32,13 @@
 			<tr>
 				<td>성별</td><td><%=addrBook.getGender() %>
 			</tr>
+		<%
+			}else{
+				response.sendRedirect("./addrForm.jsp");
+			}
+		%>
 		</table>
+		<p><a href="./addrList.jsp">목록 보기</a>
 	</div>
 </body>
 </html>

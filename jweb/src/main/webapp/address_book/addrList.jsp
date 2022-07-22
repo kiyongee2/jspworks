@@ -16,7 +16,7 @@
 		<p><a href="./addrForm.jsp">주소 추가</a>
 		<table id="tbl_list">
 			<tr>
-				<td>이름</td><td>전화번호</td><td>이메일</td><td>성별</td><td>보기</td><td>삭제</td>
+				<th>이름</th><th>전화번호</th><th>이메일</th><th>성별</th><th>보기</th><th>삭제</th>
 			</tr>
 			<%
 				for(int i=0; i<abDAO.getListAll().size(); i++){
