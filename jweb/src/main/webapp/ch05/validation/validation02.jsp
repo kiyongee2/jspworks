@@ -11,7 +11,8 @@
 		let form = document.loginForm;
 		
 		//아이디 값이 없는 경우
-		if(form.userid.value == ""){
+		//form.userid.value.length == 0
+		if(form.userid.value == ""){  //공백문자와 같으면
 			alert("아이디를 입력해주세요");
 			form.userid.focus();  //커서 표시
 			return false;         //전송을 막음

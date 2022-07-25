@@ -13,7 +13,7 @@
 		alert("아이디는 4~12자로 입력해주세요");
 		form.userid.select();  //선택 영역 지정
 		return false;
-	}else if(pw.length != 5){ //비밀번호 길이 체크
+	}else if(!(pw.length == 5)){ //비밀번호 길이 체크
 		alert("비밀번호는 5자로 입력해주세요");
 		form.passwd.select();  //선택 영역 지정
 		return false;
