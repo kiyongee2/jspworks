@@ -18,13 +18,7 @@
 		</p>
 		<table id="tbl_list">
 			<tr>
-				<th>번호</th>
-				<th>이름</th>
-				<th>전화번호</th>
-				<th>이메일</th>
-				<th>성별</th>
-				<th>가입일</th>
-				<th>보기</th>
+				<th>번호</th><th>이름</th><th>전화번호</th><th>이메일</th><th>성별</th><th>가입일</th><th>보기</th>
 			</tr>
 			<%
 				for(int i=0; i<abDAO.getListAll().size(); i++){

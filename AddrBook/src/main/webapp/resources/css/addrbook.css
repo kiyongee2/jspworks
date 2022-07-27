@@ -3,6 +3,7 @@
 /* 전체 레이아웃 */
 #container{width: 80%; margin: 0 auto; text-align: center;
            margin-top: 50px;}
+a{text-decoration: none; color: #000;}
           
 /* 주소록 등록 스타일 */
 #tbl{width: 350px; margin:0 auto;}
