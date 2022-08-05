@@ -27,6 +27,8 @@ footer{margin-left: 20%; margin-top: 10%}
 .tbl_list, th, td{border: 1px solid #ccc; 
 	border-collapse: collapse; padding: 10px;}
 .tbl_list thead{background: #eee;}
+.btnWrite{height: 40px; text-align: right; margin-top: 20px;}
+.btnWrite button{padding: 20px;}
 
 
 

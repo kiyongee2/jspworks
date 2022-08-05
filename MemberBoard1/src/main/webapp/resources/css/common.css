@@ -23,16 +23,26 @@ footer{margin-left: 20%; margin-top: 10%}
 .tbl{width: 450px; margin: 0 auto;}
 .tbl, td{border: 1px solid #ccc; 
 	border-collapse: collapse; padding: 10px;}
-.tbl_list{width: 700px; margin: 0 auto;}
+.tbl_list, .tbl_write, .tbl_bo_view{width: 700px; margin: 0 auto;}
 .tbl_list, th, td{border: 1px solid #ccc; 
 	border-collapse: collapse; padding: 10px;}
 .tbl_list thead{background: #eee;}
-
-
-
-
-
-
-
-
-
+.btnWrite{height: 40px; text-align: right; margin-right: 30%;}
+.btnWrite button{width: 80px; height:40px; margin-top: 20px;}
+.tbl_write, td{border: 1px solid #ccc; 
+	border-collapse: collapse; padding: 10px;}
+.tbl_write .w_title{width: 650px; height: 25px;}
+.tbl_write textarea{width: 650px;}
+.tbl_write input[type="submit"], input[type="reset"]{width: 60px; height: 30px;}
+.tbl_bo_view, td{border: 1px solid #ccc; 
+	border-collapse: collapse; padding: 10px;}
+.tbl_bo_view input{width: 550px; height: 30px;}	
+.tbl_bo_view td:nth-child(1){width: 100px;}
+.tbl_bo_view input[type="submit"], input[type="button"]{width: 60px; height: 30px;}	
+	
+	
+	
+	
+	
+	
+	

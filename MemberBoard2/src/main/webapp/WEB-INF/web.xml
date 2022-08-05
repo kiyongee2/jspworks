@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>MemberBoard2</display-name>
+  <security-role>
+  	<role-name>admin</role-name>
+  </security-role>
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>MemberBoard</web-resource-name>
+  		<url-pattern>/memberList.do</url-pattern>
+  		<http-method>GET</http-method>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<description>관리자</description>
+  		<role-name>admin</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  
+  <!-- 폼 인증 -->
+  <login-config>
+  	<auth-method>FORM</auth-method>
+  	<form-login-config>
+  		<form-login-page>/loginAdmin.jsp</form-login-page>
+  		<form-error-page>/login_failed.jsp</form-error-page>
+  	</form-login-config>
+  </login-config>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>

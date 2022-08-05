@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.repository.Member;
 import com.repository.MemberDAO;
 
-@WebServlet("*.do")
+@WebServlet("*.do")  //url mapping - 확장자 .do인 모든 파일
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 	
@@ -27,7 +27,7 @@ public class MainController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		doPost(request, response);  //doPost에서 get방식 처리
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -97,6 +97,16 @@ public class MainController extends HttpServlet {
 			//로그 아웃 처리 요청
 			session.invalidate();
 			nextPage = "./main.jsp";
+		}else if(command.equals("/memberView.do")) {
+			//나의 정보를 클릭하면 상세 보기
+			//세션 권한이 있는 memberId
+			String memberId = (String)session.getAttribute("sessionId");
+			
+			Member member = memberDAO.getMember(memberId);
+			
+			//model and view
+			request.setAttribute("member", member);
+			nextPage = "/memberView.jsp";
 		}
 		//포워딩 - 페이지 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

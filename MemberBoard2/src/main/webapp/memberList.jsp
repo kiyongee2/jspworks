@@ -15,7 +15,7 @@
 		<div class="title">
 			<h1>회원 목록</h1>
 		</div>
-		<div style="margin-bottom: 20px; text-align: right; margin-right:30%">
+		<div style="margin-bottom: 20px; text-align: right; margin-right:35%">
 			<p><a href="/logout.do">[관리자 로그아웃]</a>
 		</div>
 		<div>

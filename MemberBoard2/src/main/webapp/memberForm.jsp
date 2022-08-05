@@ -25,11 +25,11 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="text" name="passwd" placeholder="PASSWORD"></td>
+					<td><input type="password" name="passwd" placeholder="PASSWORD"></td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
-					<td><input type="text" name="passwd_confirm" placeholder="PASSWORD_CONFRIM"></td>
+					<td><input type="password" name="passwd_confirm" placeholder="PASSWORD_CONFRIM"></td>
 				</tr>
 				<tr>
 					<td>이름</td>
