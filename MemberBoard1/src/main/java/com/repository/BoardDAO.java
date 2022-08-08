@@ -84,22 +84,36 @@ public class BoardDAO {
 		return board;
 	}
 	
+	//게시글 삭제
+	public void deleteBoard(int bnum) {
+		try {
+			conn = JDBCUtil.getConnection();
+			String sql = "DELETE FROM t_board WHERE bnum=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			pstmt.executeUpdate();  //삭제 실행
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
 	
+	//게시글 수정
+	public void updateBoard(Board board) {
+		conn = JDBCUtil.getConnection();
+		String sql = "UPDATE t_board SET title=?, content=? WHERE bnum=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getContent());
+			pstmt.setInt(3, board.getBnum());
+			pstmt.executeUpdate();  //수정 처리
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
+}//boardDAO 닫기

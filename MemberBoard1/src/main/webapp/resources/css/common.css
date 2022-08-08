@@ -4,6 +4,8 @@
 li{list-style: none;}
 a{text-decoration: none; color: #000;}
 input[type="text"], [type="password"]{width: 200px; height: 25px;}
+input[type="submit"], input[type="reset"], 
+input[type="button"]{width: 60px; height: 30px;}
 
 /* navbar 스타일 */
 nav{margin-top: 20px; text-align: right; margin-right: 100px;}
@@ -33,12 +35,10 @@ footer{margin-left: 20%; margin-top: 10%}
 	border-collapse: collapse; padding: 10px;}
 .tbl_write .w_title{width: 650px; height: 25px;}
 .tbl_write textarea{width: 650px;}
-.tbl_write input[type="submit"], input[type="reset"]{width: 60px; height: 30px;}
 .tbl_bo_view, td{border: 1px solid #ccc; 
 	border-collapse: collapse; padding: 10px;}
-.tbl_bo_view input{width: 550px; height: 30px;}	
-.tbl_bo_view td:nth-child(1){width: 100px;}
-.tbl_bo_view input[type="submit"], input[type="button"]{width: 60px; height: 30px;}	
+.tbl_bo_view .bo_v_title, .tbl_bo_view .bo_v_id{width: 550px; height: 30px;}	
+.tbl_bo_view td:nth-child(1){width: 100px;}	
 	
 	
 	
