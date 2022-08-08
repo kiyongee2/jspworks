@@ -39,7 +39,7 @@
 						<td><c:out value="${member.gender}" /> </td>
 						<td><c:out value="${member.joinDate}" />  </td>
 						<td>
-							<a href="./deleteProcess.do?memberId=<c:out value="${member.memberId}" />"
+							<a href="./deleteMember.do?memberId=<c:out value="${member.memberId}" />"
 							   onclick="return confirm('정말로 삭제하시겠습니까?')">
 							   <button type="button">삭제</button>
 							</a> 

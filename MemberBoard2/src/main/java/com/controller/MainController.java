@@ -65,8 +65,9 @@ public class MainController extends HttpServlet {
 			member.setGender(gender);
 			//회원 추가 dao
 			memberDAO.addMember(member);
+			request.setAttribute("msg", "register"); //model - msg 보냄
 			//view 
-			nextPage = "/main.jsp";
+			nextPage = "/memberResult.jsp";
 		}else if(command.equals("/memberList.do")) {
 			//회원 목록 요청
 			ArrayList<Member> memberList = memberDAO.getListAll();
@@ -75,18 +76,21 @@ public class MainController extends HttpServlet {
 			request.setAttribute("memberList", memberList);
 			//view
 			nextPage = "./memberList.jsp";
-		}else if(command.equals("/loginMember.do")){
+		}else if(command.equals("/loginMember.do")){  //로그인 화면 요청
 			nextPage = "/loginMember.jsp";
-		}else if(command.equals("/loginProcess.do")) {
+		}else if(command.equals("/loginProcess.do")) { //로그인 인증 처리
 			//로그인 처리 요청
 			String memberId = request.getParameter("memberId");
 			String passwd = request.getParameter("passwd");
 			
 			boolean loginResult = memberDAO.checkLogin(memberId, passwd);
+			String name = memberDAO.getNameByLogin(memberId);
 			
 			if(loginResult){
-				session.setAttribute("sessionId", memberId);  //세션 발급
-				nextPage = "./main.jsp";
+				session.setAttribute("sessionId", memberId);  //아이디 세션 발급
+				session.setAttribute("name", name);  //이름 세션 발급
+				request.setAttribute("msg", "login");  //model - msg를 보냄
+				nextPage = "/memberResult.jsp";
 			}else{
 				out.println("<script>");
 				out.println("alert('아이디나 비밀번호를 확인해주세요')");
@@ -107,6 +111,31 @@ public class MainController extends HttpServlet {
 			//model and view
 			request.setAttribute("member", member);
 			nextPage = "/memberView.jsp";
+		}else if(command.equals("/deleteMember.do")) {
+			//회원 삭제 처리
+			String memberId = request.getParameter("memberId");
+			
+			memberDAO.deleteMember(memberId);
+			
+			nextPage = "./memberList.do";
+		}else if(command.equals("/updateMember.do")) {
+			//데이터 넘겨 받음
+			String memberId = request.getParameter("memberId");
+			String passwd = request.getParameter("passwd");
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			
+			//Member 객체 생성 및 set
+			Member member = new Member();
+			member.setMemberId(memberId);
+			member.setPasswd(passwd);
+			member.setName(name);
+			member.setGender(gender);
+			
+			//수정 처리-dao 및 페이지 이동
+			memberDAO.updateMember(member);
+			request.setAttribute("msg", "update"); 
+			nextPage = "/memberResult.jsp";
 		}
 		//포워딩 - 페이지 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

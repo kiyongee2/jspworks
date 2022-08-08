@@ -4,6 +4,8 @@
 li{list-style: none;}
 a{text-decoration: none; color: #000;}
 input[type="text"], [type="password"]{width: 200px; height: 25px;}
+input[type="submit"], input[type="reset"], 
+input[type="button"]{width: 60px; height: 30px;}
 
 /* navbar 스타일 */
 nav{margin-top: 20px; text-align: right; margin-right: 100px;}
@@ -15,6 +17,7 @@ nav ul li:hover{background: #eee;}
 #container{width: 100%; margin: 0 auto; text-align: center;}
 .title{height: 130px; background: beige; line-height: 130px;
     margin-bottom: 20px;}
+.msg{height: 80px; background: pink; line-height: 80px; color: brown;}
 h1{font-size: 48px;}
 
 footer{margin-left: 20%; margin-top: 10%}

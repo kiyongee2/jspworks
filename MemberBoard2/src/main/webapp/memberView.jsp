@@ -8,6 +8,21 @@
 <meta charset="UTF-8">
 <title>나의 정보</title>
 <link rel="stylesheet" href="./resources/css/common.css">
+<script>
+	function checkView(){
+		let form = document.viewForm;
+		let pw1 = form.passwd.value;
+		let pw2 = form.passwd_confirm.value;
+		
+		if(pw1 != pw2){
+			alert("비밀번호를 동일하게 입력해주세요.");
+			form.passwd_confirm.select();
+			return false;
+		}else{
+			form.submit();  //폼을 전송
+		}
+	}
+</script>
 </head>
 <jsp:useBean id="memberDAO" class="com.repository.MemberDAO" scope="application" />
 <body>
@@ -17,7 +32,7 @@
 			<h1>나의 정보</h1>
 		</div>
 		<div>
-		<form action="./updateMember.jsp" method="post">
+		<form action="./updateMember.do" method="post" name="viewForm">
 			<table class="tbl">
 				<tr>
 					<td>아이디</td>
@@ -54,7 +69,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="수정">
+						<input type="button" value="수정" onclick="checkView()">
 						<input type="reset" value="취소">
 					</td>
 				</tr>
