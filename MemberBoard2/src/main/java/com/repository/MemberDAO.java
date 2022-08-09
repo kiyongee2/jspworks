@@ -65,7 +65,26 @@ public class MemberDAO {
 	}
 	
 	//로그인 체크
-	public Boolean checkLogin(String memberId, String password) {
+	public Boolean checkLogin(Member member) {
+		try {
+			conn = JDBCUtil.getConnection(); //db 연결
+			String sql = "SELECT * FROM t_member WHERE memberid=? and passwd=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getPasswd());
+			rs = pstmt.executeQuery();
+			if(rs.next()) { //아이디와 비밀번호가 일치하면
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+		return false;
+	}
+	
+	/*public Boolean checkLogin(String memberId, String password) {
 		
 		try {
 			conn = JDBCUtil.getConnection(); //db 연결
@@ -83,7 +102,7 @@ public class MemberDAO {
 			JDBCUtil.close(conn, pstmt, rs);
 		}
 		return false;
-	}
+	}*/
 	
 	//회원 이름 가져오기 메소드
 	public String getNameByLogin(String memberId) {

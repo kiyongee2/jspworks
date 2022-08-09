@@ -25,10 +25,14 @@
 			<c:when test="${msg eq 'update'}">
 				<h2>회원 정보가 수정되었습니다.</h2>
 			</c:when>
+			<c:when test="${msg eq 'bo_delete'}">
+				<h2>게시글이 삭제되었습니다.</h2>
+			</c:when>
+			<c:when test="${msg eq 'bo_update'}">
+				<h2>게시글이 수정되었습니다.</h2>
+			</c:when>
 		</c:choose>
 		</div>
-	
-	
 	</div>
 	<jsp:include page="./footer.jsp" />
 </body>
