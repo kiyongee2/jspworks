@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.repository.Board;
+import com.repository.BoardDAO;
 import com.repository.Member;
 import com.repository.MemberDAO;
 
@@ -21,9 +23,11 @@ public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 	
 	MemberDAO memberDAO;
+	BoardDAO boardDAO;
 
 	public void init(ServletConfig config) throws ServletException {
 		memberDAO = new MemberDAO();
+		boardDAO = new BoardDAO();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -136,7 +140,35 @@ public class MainController extends HttpServlet {
 			memberDAO.updateMember(member);
 			request.setAttribute("msg", "update"); 
 			nextPage = "/memberResult.jsp";
+		}else if(command.equals("/boardList.do")) { //게시판 목록 페이지 요청
+			
+			//게시글 목록 db 처리
+			ArrayList<Board> boardList = boardDAO.getListAll();
+			
+			//model - 데이터
+			request.setAttribute("boardList", boardList);
+			
+			nextPage = "/board/boardList.jsp";
+		}else if(command.equals("/writeForm.do")) { //글쓰기 페이지 요청
+			nextPage = "/board/writeForm.jsp";
+		}else if(command.equals("/writeProcess.do")) { //글쓰기 처리 요청
+			//name 속성 값 가져오기
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			//작성자는 로그인한 멤버 - 세션을 이용
+			String memberId = (String)session.getAttribute("sessionId");
+			
+			Board board = new Board();
+			board.setTitle(title);
+			board.setContent(content);
+			board.setMemberId(memberId);  
+			
+			boardDAO.insertBoard(board);
+			
+			nextPage = "/boardList.do";  //do로 목록 요청
 		}
+		
+		
 		//포워딩 - 페이지 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
