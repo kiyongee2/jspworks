@@ -19,7 +19,7 @@
 			<table class="tbl_list">
 				<thead>
 					<tr>
-						<th>번호</th><th>제목</th><th>글쓴이</th><th>작성일</th>
+						<th>번호</th><th>제목</th><th>글쓴이</th><th>작성일</th><th>조회수</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -30,6 +30,7 @@
 						<td><c:out value="${board.memberId}" /></td>
 						<td><fmt:formatDate value="${board.regDate}" 
 						     pattern="yyyy-MM-dd hh:mm:ss"/></td>
+						<td><c:out value="${board.hit}" /> </td>
 					</tr>
 				</c:forEach>
 				</tbody>

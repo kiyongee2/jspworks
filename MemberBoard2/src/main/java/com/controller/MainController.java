@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.repository.Board;
 import com.repository.BoardDAO;
+import com.repository.BoardDAO3;
 import com.repository.Member;
 import com.repository.MemberDAO;
 
@@ -173,7 +174,11 @@ public class MainController extends HttpServlet {
 			nextPage = "/boardList.do";  //do로 목록 요청
 		}else if(command.equals("/boardView.do")) {
 			int bnum = Integer.parseInt(request.getParameter("bnum"));
+			//조회수 처리
+			boardDAO.updateHit(bnum);
+			// 상세보기 처리
 			Board board = boardDAO.getBoard(bnum);
+		
 			request.setAttribute("board", board);  //model - board
 			nextPage = "/board/boardView.jsp";  //이동 페이지
 		}else if(command.equals("/deleteBoard.do")) {
