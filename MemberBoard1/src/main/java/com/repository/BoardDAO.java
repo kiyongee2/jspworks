@@ -17,8 +17,8 @@ public class BoardDAO {
 	//게시글 쓰기
 	public void insertBoard(Board board) {
 		conn = JDBCUtil.getConnection();
-		String sql = "INSERT INTO t_board(bnum, title, content, memberId)" 
-				+ " VALUES (b_seq.nextval, ?, ?, ?)";
+		String sql = "INSERT INTO t_board(title, content, memberId)" 
+				+ " VALUES (?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle()); //폼에 입력 데이터를 db에 저장
